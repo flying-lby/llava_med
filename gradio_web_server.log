@@ -1,0 +1,87 @@
+2024-08-23 16:57:22 | INFO | gradio_web_server | args: Namespace(host='0.0.0.0', port=None, controller_url='http://localhost:10000', concurrency_count=10, model_list_mode='once', share=False, moderate=False, embed=False)
+2024-08-23 16:57:22 | INFO | gradio_web_server | Models: ['llava-med-v1.5-mistral-7b']
+2024-08-23 16:57:22 | INFO | gradio_web_server | Namespace(host='0.0.0.0', port=None, controller_url='http://localhost:10000', concurrency_count=10, model_list_mode='once', share=False, moderate=False, embed=False)
+2024-08-23 16:57:25 | INFO | stdout | Running on local URL:  http://0.0.0.0:7861
+2024-08-23 16:57:25 | INFO | stdout | 
+2024-08-23 16:57:25 | INFO | stdout | To create a public link, set `share=True` in `launch()`.
+2024-08-24 14:03:29 | INFO | gradio_web_server | args: Namespace(host='0.0.0.0', port=None, controller_url='http://localhost:10000', concurrency_count=10, model_list_mode='once', share=False, moderate=False, embed=False)
+2024-08-24 14:03:29 | INFO | gradio_web_server | Models: ['llava-med-v1.5-mistral-7b']
+2024-08-24 14:03:29 | INFO | gradio_web_server | Namespace(host='0.0.0.0', port=None, controller_url='http://localhost:10000', concurrency_count=10, model_list_mode='once', share=False, moderate=False, embed=False)
+2024-08-24 14:03:30 | INFO | stdout | Running on local URL:  http://0.0.0.0:7862
+2024-08-24 14:03:30 | INFO | stdout | 
+2024-08-24 14:03:30 | INFO | stdout | To create a public link, set `share=True` in `launch()`.
+2024-08-24 14:16:20 | ERROR | asyncio | Task exception was never retrieved
+future: <Task finished name='xuabvtgepek_10' coro=<Queue.process_events() done, defined at /home/lby/anaconda3/envs/llava-med/lib/python3.10/site-packages/gradio/queueing.py:342> exception=1 validation error for PredictBody
+event_id
+  Field required [type=missing, input_value={'data': [None, 'llava-me...on_hash': 'xuabvtgepek'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing>
+Traceback (most recent call last):
+  File "/home/lby/anaconda3/envs/llava-med/lib/python3.10/site-packages/gradio/queueing.py", line 346, in process_events
+    client_awake = await self.gather_event_data(event)
+  File "/home/lby/anaconda3/envs/llava-med/lib/python3.10/site-packages/gradio/queueing.py", line 219, in gather_event_data
+    data, client_awake = await self.get_message(event, timeout=receive_timeout)
+  File "/home/lby/anaconda3/envs/llava-med/lib/python3.10/site-packages/gradio/queueing.py", line 448, in get_message
+    return PredictBody(**data), True
+  File "/home/lby/anaconda3/envs/llava-med/lib/python3.10/site-packages/pydantic/main.py", line 193, in __init__
+    self.__pydantic_validator__.validate_python(data, self_instance=self)
+pydantic_core._pydantic_core.ValidationError: 1 validation error for PredictBody
+event_id
+  Field required [type=missing, input_value={'data': [None, 'llava-me...on_hash': 'xuabvtgepek'}, input_type=dict]
+    For further information visit https://errors.pydantic.dev/2.8/v/missing
+2024-08-24 14:30:08 | INFO | stdout | Keyboard interruption in main thread... closing server.
+2024-08-24 14:30:24 | ERROR | stderr | Traceback (most recent call last):
+2024-08-24 14:30:24 | ERROR | stderr |   File "/home/lby/anaconda3/envs/llava-med/lib/python3.10/site-packages/gradio/blocks.py", line 2058, in block_thread
+2024-08-24 14:30:24 | ERROR | stderr |     time.sleep(0.1)
+2024-08-24 14:30:24 | ERROR | stderr | KeyboardInterrupt
+2024-08-24 14:30:24 | ERROR | stderr | 
+2024-08-24 14:30:24 | ERROR | stderr | During handling of the above exception, another exception occurred:
+2024-08-24 14:30:24 | ERROR | stderr | 
+2024-08-24 14:30:24 | ERROR | stderr | Traceback (most recent call last):
+2024-08-24 14:30:24 | ERROR | stderr |   File "/home/lby/anaconda3/envs/llava-med/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+2024-08-24 14:30:24 | ERROR | stderr |     return _run_code(code, main_globals, None,
+2024-08-24 14:30:24 | ERROR | stderr |   File "/home/lby/anaconda3/envs/llava-med/lib/python3.10/runpy.py", line 86, in _run_code
+2024-08-24 14:30:24 | ERROR | stderr |     exec(code, run_globals)
+2024-08-24 14:30:24 | ERROR | stderr |   File "/home/lby/llava_med/LLaVA-Med/llava/serve/gradio_web_server.py", line 470, in <module>
+2024-08-24 14:30:24 | ERROR | stderr |     demo.queue(
+2024-08-24 14:30:24 | ERROR | stderr |   File "/home/lby/anaconda3/envs/llava-med/lib/python3.10/site-packages/gradio/blocks.py", line 1975, in launch
+2024-08-24 14:30:24 | ERROR | stderr |     self.block_thread()
+2024-08-24 14:30:24 | ERROR | stderr |   File "/home/lby/anaconda3/envs/llava-med/lib/python3.10/site-packages/gradio/blocks.py", line 2061, in block_thread
+2024-08-24 14:30:24 | ERROR | stderr |     self.server.close()
+2024-08-24 14:30:24 | ERROR | stderr |   File "/home/lby/anaconda3/envs/llava-med/lib/python3.10/site-packages/gradio/networking.py", line 43, in close
+2024-08-24 14:30:24 | ERROR | stderr |     self.thread.join()
+2024-08-24 14:30:24 | ERROR | stderr |   File "/home/lby/anaconda3/envs/llava-med/lib/python3.10/threading.py", line 1096, in join
+2024-08-24 14:30:24 | ERROR | stderr |     self._wait_for_tstate_lock()
+2024-08-24 14:30:24 | ERROR | stderr |   File "/home/lby/anaconda3/envs/llava-med/lib/python3.10/threading.py", line 1116, in _wait_for_tstate_lock
+2024-08-24 14:30:24 | ERROR | stderr |     if lock.acquire(block, timeout):
+2024-08-24 14:30:24 | ERROR | stderr | KeyboardInterrupt
+2024-08-24 14:30:27 | INFO | gradio_web_server | args: Namespace(host='0.0.0.0', port=None, controller_url='http://localhost:10000', concurrency_count=10, model_list_mode='once', share=False, moderate=False, embed=False)
+2024-08-24 14:30:27 | INFO | gradio_web_server | Models: ['llava-med-v1.5-mistral-7b']
+2024-08-24 14:30:27 | INFO | gradio_web_server | Namespace(host='0.0.0.0', port=None, controller_url='http://localhost:10000', concurrency_count=10, model_list_mode='once', share=False, moderate=False, embed=False)
+2024-08-24 14:30:28 | INFO | stdout | Running on local URL:  http://0.0.0.0:7862
+2024-08-24 14:30:28 | INFO | stdout | 
+2024-08-24 14:30:28 | INFO | stdout | To create a public link, set `share=True` in `launch()`.
+2024-08-24 14:30:34 | INFO | gradio_web_server | load_demo. ip: 127.0.0.1. params: {}
+2024-08-24 14:30:43 | INFO | gradio_web_server | add_text. ip: 127.0.0.1. len: 97
+2024-08-24 14:30:44 | INFO | gradio_web_server | http_bot. ip: 127.0.0.1
+2024-08-24 14:30:44 | INFO | gradio_web_server | model_name: llava-med-v1.5-mistral-7b, worker_addr: http://localhost:40000
+2024-08-24 14:30:44 | INFO | gradio_web_server | ==== request ====
+{'model': 'llava-med-v1.5-mistral-7b', 'prompt': '[INST] <image>\nIs there evidence of an aortic aneurysm? Please choose from the following two options: [yes, no]? [/INST]', 'temperature': 0.2, 'top_p': 0.7, 'max_new_tokens': 512, 'stop': '</s>', 'images': "List of 1 images: ['001be7033806b8c6f312ffcc5255f870']"}
+2024-08-24 14:30:48 | INFO | gradio_web_server | There is no evidence of an aortic aneurysm in the chest x-ray.
+2024-08-24 14:30:52 | INFO | gradio_web_server | add_text. ip: 127.0.0.1. len: 51
+2024-08-24 14:30:53 | INFO | gradio_web_server | http_bot. ip: 127.0.0.1
+2024-08-24 14:30:53 | INFO | gradio_web_server | model_name: llava-med-v1.5-mistral-7b, worker_addr: http://localhost:40000
+2024-08-24 14:30:53 | INFO | gradio_web_server | ==== request ====
+{'model': 'llava-med-v1.5-mistral-7b', 'prompt': '[INST] <image>\nWhat is the abnormality by the right hemidiaphragm? [/INST]', 'temperature': 0.2, 'top_p': 0.7, 'max_new_tokens': 512, 'stop': '</s>', 'images': "List of 1 images: ['0f46d9f741e6ec38a7ef73a4537e64af']"}
+2024-08-24 14:30:59 | INFO | gradio_web_server | The abnormality by the right hemidiaphragm in the chest X-ray is a homogenous opacity. This means that there is an area of increased density in the region, which could be due to various reasons such as fluid accumulation, infection, or a mass.
+2024-08-24 14:33:37 | INFO | gradio_web_server | add_text. ip: 127.0.0.1. len: 38
+2024-08-24 14:33:38 | INFO | gradio_web_server | http_bot. ip: 127.0.0.1
+2024-08-24 14:33:38 | INFO | gradio_web_server | model_name: llava-med-v1.5-mistral-7b, worker_addr: http://localhost:40000
+2024-08-24 14:33:38 | INFO | gradio_web_server | ==== request ====
+{'model': 'llava-med-v1.5-mistral-7b', 'prompt': '[INST] <image>\nCan you describe the image in details? [/INST]', 'temperature': 0.2, 'top_p': 0.7, 'max_new_tokens': 512, 'stop': '</s>', 'images': "List of 1 images: ['3135e95851627533519af49356fb9d82']"}
+2024-08-24 14:33:46 | INFO | gradio_web_server | The image is a coronal computed tomography (CT) scan of the abdomen. In a coronal view, the body is shown in a vertical plane, dividing it into anterior (front) and posterior (back) sections. This view allows for a detailed examination of the internal organs and structures within the abdominal cavity. The image can help identify any abnormalities, such as masses, tumors, or other pathological changes, as well as assess the overall anatomy and function of the organs.
+2024-08-24 14:34:17 | INFO | gradio_web_server | add_text. ip: 127.0.0.1. len: 15
+2024-08-24 14:34:17 | INFO | gradio_web_server | http_bot. ip: 127.0.0.1
+2024-08-24 14:34:17 | INFO | gradio_web_server | model_name: llava-med-v1.5-mistral-7b, worker_addr: http://localhost:40000
+2024-08-24 14:34:17 | INFO | gradio_web_server | ==== request ====
+{'model': 'llava-med-v1.5-mistral-7b', 'prompt': '[INST] <image>\nCan you describe the image in details? [/INST] The image is a coronal computed tomography (CT) scan of the abdomen. In a coronal view, the body is shown in a vertical plane, dividing it into anterior (front) and posterior (back) sections. This view allows for a detailed examination of the internal organs and structures within the abdominal cavity. The image can help identify any abnormalities, such as masses, tumors, or other pathological changes, as well as assess the overall anatomy and function of the organs. </s>[INST] 你能将图像中病变区域定位出来吗 [/INST]', 'temperature': 0.2, 'top_p': 0.7, 'max_new_tokens': 512, 'stop': '</s>', 'images': "List of 1 images: ['3135e95851627533519af49356fb9d82']"}
+2024-08-24 14:34:22 | INFO | gradio_web_server | Yes, the image shows a well-defined mass in the right upper quadrant of the abdomen. This mass is located in the region of the liver and gallbladder. The exact nature of the mass would require further evaluation and analysis by a healthcare professional to determine its cause and potential implications.
