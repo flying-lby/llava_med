@@ -1,0 +1,34 @@
+2024-08-24 14:08:21 | INFO | model_worker | args: Namespace(host='0.0.0.0', port=40000, worker_address='http://localhost:40000', controller_address='http://localhost:10000', model_path='/srv/lby/llava_med/llava-med-v1.5-mistral-7b/model-00001-of-00004.safetensors', model_base=None, model_name=None, device='cuda', multi_modal=True, limit_model_concurrency=5, stream_interval=1, no_register=False, load_8bit=False, load_4bit=False)
+2024-08-24 14:08:21 | WARNING | model_worker | Multimodal mode is automatically detected with model name, please make sure `llava` is included in the model path.
+2024-08-24 14:08:21 | INFO | model_worker | Loading the model model-00001-of-00004.safetensors on worker d2df02 ...
+2024-08-24 14:08:21 | ERROR | stderr | Traceback (most recent call last):
+2024-08-24 14:08:21 | ERROR | stderr |   File "/home/lby/anaconda3/envs/llava-med/lib/python3.10/site-packages/transformers/utils/hub.py", line 389, in cached_file
+2024-08-24 14:08:21 | ERROR | stderr |     resolved_file = hf_hub_download(
+2024-08-24 14:08:21 | ERROR | stderr |   File "/home/lby/anaconda3/envs/llava-med/lib/python3.10/site-packages/huggingface_hub/utils/_deprecation.py", line 101, in inner_f
+2024-08-24 14:08:21 | ERROR | stderr |     return f(*args, **kwargs)
+2024-08-24 14:08:21 | ERROR | stderr |   File "/home/lby/anaconda3/envs/llava-med/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 106, in _inner_fn
+2024-08-24 14:08:21 | ERROR | stderr |     validate_repo_id(arg_value)
+2024-08-24 14:08:21 | ERROR | stderr |   File "/home/lby/anaconda3/envs/llava-med/lib/python3.10/site-packages/huggingface_hub/utils/_validators.py", line 154, in validate_repo_id
+2024-08-24 14:08:21 | ERROR | stderr |     raise HFValidationError(
+2024-08-24 14:08:21 | ERROR | stderr | huggingface_hub.errors.HFValidationError: Repo id must be in the form 'repo_name' or 'namespace/repo_name': '/srv/lby/llava_med/llava-med-v1.5-mistral-7b/model-00001-of-00004.safetensors'. Use `repo_type` argument if needed.
+2024-08-24 14:08:21 | ERROR | stderr | 
+2024-08-24 14:08:21 | ERROR | stderr | The above exception was the direct cause of the following exception:
+2024-08-24 14:08:21 | ERROR | stderr | 
+2024-08-24 14:08:21 | ERROR | stderr | Traceback (most recent call last):
+2024-08-24 14:08:21 | ERROR | stderr |   File "/home/lby/anaconda3/envs/llava-med/lib/python3.10/runpy.py", line 196, in _run_module_as_main
+2024-08-24 14:08:21 | ERROR | stderr |     return _run_code(code, main_globals, None,
+2024-08-24 14:08:21 | ERROR | stderr |   File "/home/lby/anaconda3/envs/llava-med/lib/python3.10/runpy.py", line 86, in _run_code
+2024-08-24 14:08:21 | ERROR | stderr |     exec(code, run_globals)
+2024-08-24 14:08:21 | ERROR | stderr |   File "/home/lby/llava_med/LLaVA-Med/llava/serve/model_worker.py", line 275, in <module>
+2024-08-24 14:08:21 | ERROR | stderr |     worker = ModelWorker(args.controller_address,
+2024-08-24 14:08:21 | ERROR | stderr |   File "/home/lby/llava_med/LLaVA-Med/llava/serve/model_worker.py", line 65, in __init__
+2024-08-24 14:08:21 | ERROR | stderr |     self.tokenizer, self.model, self.image_processor, self.context_len = load_pretrained_model(
+2024-08-24 14:08:21 | ERROR | stderr |   File "/home/lby/llava_med/LLaVA-Med/llava/model/builder.py", line 56, in load_pretrained_model
+2024-08-24 14:08:21 | ERROR | stderr |     tokenizer = AutoTokenizer.from_pretrained(model_path, use_fast=False)
+2024-08-24 14:08:21 | ERROR | stderr |   File "/home/lby/anaconda3/envs/llava-med/lib/python3.10/site-packages/transformers/models/auto/tokenization_auto.py", line 737, in from_pretrained
+2024-08-24 14:08:21 | ERROR | stderr |     tokenizer_config = get_tokenizer_config(pretrained_model_name_or_path, **kwargs)
+2024-08-24 14:08:21 | ERROR | stderr |   File "/home/lby/anaconda3/envs/llava-med/lib/python3.10/site-packages/transformers/models/auto/tokenization_auto.py", line 569, in get_tokenizer_config
+2024-08-24 14:08:21 | ERROR | stderr |     resolved_config_file = cached_file(
+2024-08-24 14:08:21 | ERROR | stderr |   File "/home/lby/anaconda3/envs/llava-med/lib/python3.10/site-packages/transformers/utils/hub.py", line 454, in cached_file
+2024-08-24 14:08:21 | ERROR | stderr |     raise EnvironmentError(
+2024-08-24 14:08:21 | ERROR | stderr | OSError: Incorrect path_or_model_id: '/srv/lby/llava_med/llava-med-v1.5-mistral-7b/model-00001-of-00004.safetensors'. Please provide either the path to a local folder or the repo_id of a model on the Hub.
