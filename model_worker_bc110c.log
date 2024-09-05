@@ -1,6 +1,0 @@
-2024-08-24 14:02:55 | ERROR | stderr | usage: model_worker.py [-h] [--host HOST] [--port PORT] [--worker-address WORKER_ADDRESS]
-2024-08-24 14:02:55 | ERROR | stderr |                        [--controller-address CONTROLLER_ADDRESS] [--model-path MODEL_PATH]
-2024-08-24 14:02:55 | ERROR | stderr |                        [--model-base MODEL_BASE] [--model-name MODEL_NAME] [--device DEVICE]
-2024-08-24 14:02:55 | ERROR | stderr |                        [--multi-modal] [--limit-model-concurrency LIMIT_MODEL_CONCURRENCY]
-2024-08-24 14:02:55 | ERROR | stderr |                        [--stream-interval STREAM_INTERVAL] [--no-register] [--load-8bit] [--load-4bit]
-2024-08-24 14:02:55 | ERROR | stderr | model_worker.py: error: unrecognized arguments: --num-gpus 1
