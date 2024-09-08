@@ -70,21 +70,33 @@ for index, row in df.iterrows():
     conversations = [
         {
             "from": "human",
-            "value": "You now assume the role of a knowledgeable radiologist. What medical diagnosis can you make from this image?\n<image>"
-        },
-        {
-            "from": "gpt",
-            "value": row["caption"]
-        },
-        {
-            "from": "human",
-            "value": f"""You now assume the role of a knowledgeable radiologist. Please analyze the provided medical image in conjunction with the following medical report:'{row['caption']}' Based on this information, determine the most appropriate disease category or categories present in the patient. The diagnosis can involve one or more conditions. You must select the relevant categories from the following list: ['Atelectasis', 'Cardiomegaly', 'Consolidation', 'Edema', 'Enlarged Cardiomediastinum', 'Fracture', 'Lung Lesion', 'Lung Opacity', 'Pleural Effusion', 'Pleural Other', 'Pneumonia', 'Pneumothorax', 'Normal']"""
+            "value": "You are now acting as a knowledgeable radiologist. Please analyze the provided chest x-ray image and identify the most appropriate category or categories from the given list: ['Atelectasis', 'Cardiomegaly', 'Consolidation', 'Edema', 'Enlarged Cardiomediastinum', 'Fracture', 'Lung Lesion', 'Lung Opacity', 'Pleural Effusion', 'Pleural Other', 'Pneumonia', 'Pneumothorax', 'Normal'].\n<image>"
         },
         {
             "from": "gpt",
             "value": ", ".join(label) 
         }
     ]
+    
+    
+    # conversations = [
+    #     {
+    #         "from": "human",
+    #         "value": "You now assume the role of a knowledgeable radiologist. What medical diagnosis can you make from this image?\n<image>"
+    #     },
+    #     {
+    #         "from": "gpt",
+    #         "value": row["caption"]
+    #     },
+    #     {
+    #         "from": "human",
+    #         "value": f"""You now assume the role of a knowledgeable radiologist. Please analyze the provided medical image in conjunction with the following medical report:'{row['caption']}' Based on this information, determine the most appropriate disease category or categories present in the patient. The diagnosis can involve one or more conditions. You must select the relevant categories from the following list: ['Atelectasis', 'Cardiomegaly', 'Consolidation', 'Edema', 'Enlarged Cardiomediastinum', 'Fracture', 'Lung Lesion', 'Lung Opacity', 'Pleural Effusion', 'Pleural Other', 'Pneumonia', 'Pneumothorax', 'Normal']"""
+    #     },
+    #     {
+    #         "from": "gpt",
+    #         "value": ", ".join(label) 
+    #     }
+    # ]
 
     path = row["Path"]
 
@@ -97,7 +109,7 @@ for index, row in df.iterrows():
     json_data.append(entry)
 
 # 检查目录路径是否存在，如果不存在则创建
-json_file_path = '/home/lby/llava_med/LLaVA-Med/other_data/classify_mimic_file.json'  # 替换为实际的输出JSON文件路径
+json_file_path = '/home/lby/llava_med/LLaVA-Med/llava/sft_data/classify_mimic_file.json'  # 替换为实际的输出JSON文件路径
 json_dir = os.path.dirname(json_file_path)
 if not os.path.exists(json_dir):
     os.makedirs(json_dir)

@@ -297,8 +297,9 @@ conv_vicuna_v0 = Conversation(
 )
 
 conv_vicuna_v1 = Conversation(
-    system="You now assume the role of a knowledgeable radiologist."
-        """Here is the given list: [atelectasis, cardiomegaly, pleural effusion, infiltration, lung mass, lung nodule, pneumonia, pneumothorax, consolidation, edema, emphysema, fibrosis, pleural thicken, hernia, no finding]. Strictly follow the output format.""",
+    system="You are now acting as a knowledgeable radiologist."
+        """Analyze this medical image and calculate the probability of each category from the following list: ['atelectasis', 'cardiomegaly', 'pleural effusion', 'infiltration', 'lung mass', 'lung nodule', 'pneumonia', 'pneumothorax', 'consolidation', 'edema', 'emphysema', 'fibrosis', 'pleural thickening', 'hernia', 'no finding'].
+""",
     roles=("USER", "ASSISTANT"),
     version="v1",
     messages=(),
