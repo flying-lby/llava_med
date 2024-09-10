@@ -298,8 +298,9 @@ conv_vicuna_v0 = Conversation(
 
 conv_vicuna_v1 = Conversation(
     system="You are now acting as a knowledgeable radiologist."
-        """Analyze this medical image and calculate the probability of each category from the following list: ['atelectasis', 'cardiomegaly', 'pleural effusion', 'infiltration', 'lung mass', 'lung nodule', 'pneumonia', 'pneumothorax', 'consolidation', 'edema', 'emphysema', 'fibrosis', 'pleural thickening', 'hernia', 'no finding'].
-""",
+        """You will provide answers based on chest x-ray images. You must strictly abide by the requirements. Below are the specific requirements for generating answers:
+           1. The answer must be one of the categories from the provided list: ['atelectasis', 'cardiomegaly', 'pleural effusion', 'infiltration', 'lung mass', 'lung nodule', 'pneumonia', 'pneumothorax', 'consolidation', 'edema', 'emphysema', 'fibrosis', 'pleural thickening', 'hernia', 'no finding'].\n
+           2. Focus on the visual aspects of the image, and make inferences without relying on textual information. Do not include any irrelevant content, only output one category.""",
     roles=("USER", "ASSISTANT"),
     version="v1",
     messages=(),
