@@ -2,16 +2,16 @@
 ###
  # @Author: fly
  # @Date: 2024-08-24 14:44:49
- # @FilePath: /llava_med/LLaVA-Med/llava/train/finetune_task_lora.sh
+ # @FilePath: /llava_med/LLaVA-Med/llava/run/train/finetune_task_lora.sh
  # @Description: 
 ### 
 
-deepspeed train_mem.py \
+deepspeed train/train_mem.py \
     --lora_enable True --lora_r 128 --lora_alpha 256 --mm_projector_lr 2e-6 \
-    --deepspeed /home/lby/llava_med/LLaVA-Med/llava/train/zero3.json \
+    --deepspeed train/zero3.json \
     --model_name_or_path /srv/lby/llava_med/llava-med-v1.5-mistral-7b \
     --version v1 \
-    --data_path /home/lby/llava_med/LLaVA-Med/llava/sft_data/classify_mimic_file.json \
+    --data_path ./data/train/sft_data/classify_mimic_file.json \
     --image_folder /srv/lby/physionet.org/files/mimic-cxr-jpg/2.0.0/files \
     --vision_tower openai/clip-vit-large-patch14-336 \
     --mm_projector_type mlp2x_gelu \
