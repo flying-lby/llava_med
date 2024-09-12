@@ -54,7 +54,7 @@ def eval_model(args):
     ans_file = open(answers_file, "w")
     # Initialize a counter for processed questions
     counter = 0
-    max_count = 300  # Set the limit to 5000
+    max_count = 5000  # Set the limit to 5000
 
     for line in tqdm(questions):
         if counter >= max_count:
@@ -146,7 +146,7 @@ def get_acc():
     print(f"Total number of answers: {len(answers)}")
     # 随机选择 1000 行
     random.shuffle(answers)
-    selected_answers = answers[:100]
+    selected_answers = answers[:1000]
 
     # 初始化变量
     correct_predictions = 0
