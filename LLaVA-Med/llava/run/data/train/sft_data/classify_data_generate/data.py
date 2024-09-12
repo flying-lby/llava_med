@@ -1,7 +1,7 @@
 '''
 Author: fly
 Date: 2024-08-21 21:29:37
-FilePath: /llava_med/LLaVA-Med/llava/sft_data/classify_data_generate/data.py
+FilePath: /llava_med/LLaVA-Med/llava/run/data/train/sft_data/classify_data_generate/data.py
 Description: 
 '''
 import json
@@ -38,7 +38,7 @@ from transformers import AutoProcessor
 import os
 
 # 读取CSV文件
-csv_file_path = '/home/lby/llava_med/LLaVA-Med/other_data/cleaned_file.csv'  # 替换为实际的CSV文件路径
+csv_file_path = '/srv/lby/llava_med/other_data/cleaned_file.csv'  # 替换为实际的CSV文件路径
 df = pd.read_csv(csv_file_path)
 
 # 创建一个列表用于存放JSON数据
@@ -70,7 +70,7 @@ for index, row in df.iterrows():
     conversations = [
         {
             "from": "human",
-            "value": "You are now acting as a knowledgeable radiologist. Please analyze the provided chest x-ray image and identify the most appropriate category or categories from the given list: ['Atelectasis', 'Cardiomegaly', 'Consolidation', 'Edema', 'Enlarged Cardiomediastinum', 'Fracture', 'Lung Lesion', 'Lung Opacity', 'Pleural Effusion', 'Pleural Other', 'Pneumonia', 'Pneumothorax', 'Normal'].\n<image>"
+            "value": "What type of disease is shown in this chest x-ray image? Here is the given list: ['Atelectasis', 'Cardiomegaly', 'Consolidation', 'Edema', 'Enlarged Cardiomediastinum', 'Fracture', 'Lung Lesion', 'Lung Opacity', 'Pleural Effusion', 'Pleural Other', 'Pneumonia', 'Pneumothorax', 'Normal']. \nAnswer the question using a single word or phrase from the given list directly.\n<image>"
         },
         {
             "from": "gpt",
@@ -109,7 +109,7 @@ for index, row in df.iterrows():
     json_data.append(entry)
 
 # 检查目录路径是否存在，如果不存在则创建
-json_file_path = '/home/lby/llava_med/LLaVA-Med/llava/sft_data/classify_mimic_file.json'  # 替换为实际的输出JSON文件路径
+json_file_path = '/home/lby/llava_med/LLaVA-Med/llava/run/data/train/sft_data/classify_mimic_file.json'  # 替换为实际的输出JSON文件路径
 json_dir = os.path.dirname(json_file_path)
 if not os.path.exists(json_dir):
     os.makedirs(json_dir)

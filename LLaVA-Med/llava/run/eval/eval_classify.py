@@ -7,6 +7,7 @@ import shortuuid
 import torch
 from PIL import Image
 from tqdm import tqdm
+import random
 
 from llava.constants import (
     DEFAULT_IM_END_TOKEN,
@@ -51,7 +52,15 @@ def eval_model(args):
     answers_file = os.path.expanduser(args.answers_file)
     os.makedirs(os.path.dirname(answers_file), exist_ok=True)
     ans_file = open(answers_file, "w")
+    # Initialize a counter for processed questions
+    counter = 0
+    max_count = 300  # Set the limit to 5000
+
     for line in tqdm(questions):
+        if counter >= max_count:
+            print(f"Reached {max_count} generated answers. Exiting.")
+            break
+
         idx = line["question_id"]
         image_file = line["image"]
         qs = line["text"]
@@ -121,8 +130,66 @@ def eval_model(args):
             + "\n"
         )
         ans_file.flush()
-    ans_file.close()
 
+        # Increment the counter after each answer is processed
+        counter += 1
+
+    ans_file.close()
+    
+    
+def get_acc():
+    # 读取数据
+    output_path = './data/eval/test_prompt/Chest-X-ray_llava_val_ans.jsonl'
+    answers = [json.loads(line) for line in open(output_path)]
+
+    disease_list = ['fibrosis', 'edema', 'pneumothorax', 'cardiomegaly', 'atelectasis', 'nodule', 'emphysema', 'no finding', 'mass', 'pleural_thickening', 'effusion', 'infiltration', 'pneumonia', 'hernia', 'consolidation']
+    print(f"Total number of answers: {len(answers)}")
+    # 随机选择 1000 行
+    random.shuffle(answers)
+    selected_answers = answers[:100]
+
+    # 初始化变量
+    correct_predictions = 0
+    total_predictions = len(selected_answers)
+    error_count = 0
+    error_question_ids = []
+
+    # 遍历每个 answer，提取 labels 和预测类别
+    for item in selected_answers:
+        # 获取标签（label），labels 可能包含多个标签，以逗号或其他符号分隔
+        labels = ["-".join(item["question_id"].split("-")[1:])]  # 获取 label
+        labels = [label.lower() for label in labels]  # 转为小写以方便比较
+
+        # 获取预测的 text
+        text = item["text"].lower()
+
+        # 尝试在 text 中找到疾病列表中的元素作为预测结果
+        predicted_categories = [disease for disease in disease_list if disease in text]
+
+        if predicted_categories:
+            predicted_category = predicted_categories[0]  # 假设预测类别为匹配到的第一个疾病
+        else:
+            # 如果无法提取预测类别，统计为出错
+            error_count += 1
+            error_question_ids.append(item["question_id"])
+            continue  # 跳过此项
+
+        # 检查预测类别是否在 labels 列表中
+        if any(predicted_category in label for label in labels):
+            correct_predictions += 1
+        else:
+            # 如果预测错误，统计出错信息
+            error_count += 1
+            error_question_ids.append(item["question_id"])
+
+    # 计算准确率
+    accuracy = (correct_predictions / total_predictions) * 100
+
+    # 输出结果
+    print(f"Total labels: {total_predictions}")
+    print(f"Accuracy: {accuracy:.2f}%")
+    print(f"Number of errors: {error_count}")
+    print(f"Error question IDs: {error_question_ids}")
 
 if __name__ == "__main__":
     parser = argparse.ArgumentParser()
@@ -140,3 +207,4 @@ if __name__ == "__main__":
     args = parser.parse_args()
 
     eval_model(args)
+    get_acc()
