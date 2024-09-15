@@ -23,11 +23,11 @@
 
 
 ## General Information
-- LLaVA-Med/other_data 存放了各下游任务数据集.
+<!-- - LLaVA-Med/other_data 存放了各下游任务数据集.
 - LLaVA-Med/llava/train 存放了训练代码
 - LLaVA-Med/llava/sft_data/classify_mimic_file.json 微调数据集
 - LLaVA-Med/llava/eval 存放评估代码
-- LLaVA-Med/data/eval 存放lora微调后模型在Chest-X-ray数据集的评估结果
+- LLaVA-Med/data/eval 存放lora微调后模型在Chest-X-ray数据集的评估结果 -->
 <!-- You don't have to answer all the questions - just the ones relevant to your project. -->
 
 <!-- 
